@@ -23,6 +23,7 @@ public class PlaceholderSystem : MonoBehaviour
 
     private void Update()
     {
+
         if (SpawnData.instance.placeholderNeeded) //if new placeholder is requested
         {
             //spawn another placeholder next to the final placeholder in the array

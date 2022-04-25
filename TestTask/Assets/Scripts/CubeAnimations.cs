@@ -14,7 +14,10 @@ public class CubeAnimations : MonoBehaviour
     {
         if(isMerging) //when the merge sequence is activated for the current object
         {
-            if(gameObject.CompareTag("Merger")) PlayBlobAnimation(); //play blob animation on the merger
+            if(gameObject.CompareTag("Merger"))
+            {
+                PlayBlobAnimation(); //play blob animation on the merger
+            }
             else if(!gameObject.CompareTag("Merger")) //if the object is not the merger
             {
                 //move the object towards the merger over time by the chosen speed
@@ -25,11 +28,17 @@ public class CubeAnimations : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) //when two cubes collide
     {
-        if (gameObject.CompareTag("Merger")) Destroy(collision.gameObject); //if the colliding object is not the merger, destroy it
+        if (collision.gameObject.CompareTag("Destroyable")) Destroy(collision.gameObject); //if the colliding object is not the merger, destroy it
     }
 
     private void PlayBlobAnimation()
     {
-        animator.Play("CubeBlob"); //play the blob animation 
+        animator.Play("CubeBlob"); //play the blob animation
+    }
+
+    public void DestroyMerger()
+    {
+        Destroy(gameObject); //destroy the current game object
+        MergeSystem.instance.mergerDestroyed = true;
     }
 }

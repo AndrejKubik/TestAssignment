@@ -170,7 +170,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &537034991
 MonoBehaviour:
@@ -212,13 +212,14 @@ MonoBehaviour:
   element4spawn: 0
   element5spawn: 0
   numberOfActiveElements: 0
-  levelCap: 10
+  levelCap: 5
   rowCap: 5
   level1Cap: 0
   level2Cap: 0
   level3Cap: 0
   level4Cap: 0
   level5Cap: 0
+  canSpawn: 1
   spawnElement1: 0
   placeholderNeeded: 0
 --- !u!114 &537034993
@@ -234,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   merger: {fileID: 0}
+  mergerDestroyed: 0
 --- !u!114 &537034994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +346,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -357,6 +359,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -397,7 +400,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 30
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -422,13 +425,30 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.45971385, y: 0.30287665, z: -0.17036934, w: -0.81725353}
-  m_LocalPosition: {x: 12.792294, y: 16.585188, z: -14.751062}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1561016883}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd13f27369eedca429b21b495ef1fefc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camController: {fileID: 1561016883}
+  rotationSpeed: 0.2
+  smoothTime: 1
+  zoomLimiter: 40
+  cam: {fileID: 963194227}
 --- !u!1 &1383385953
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,13 +528,44 @@ Transform:
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1514514200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 530031800126086024, guid: e3aa8dc120d8155458a1d269f26b88fb, type: 3}
   m_PrefabInstance: {fileID: 530031801304398992}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1561016882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1561016883}
+  m_Layer: 0
+  m_Name: CameraController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1561016883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561016882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 963194228}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &530031801304398992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -544,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 530031800126086024, guid: e3aa8dc120d8155458a1d269f26b88fb, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 530031800126086024, guid: e3aa8dc120d8155458a1d269f26b88fb, type: 3}
       propertyPath: m_LocalPosition.x
